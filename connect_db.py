@@ -1,9 +1,9 @@
 import http.client
 import urllib.parse
 
-# URL del endpoint
-url = '/meteo_granadilla/query/'
-host = '127.0.0.1:8080'
+# URL del endpoint; La ruta de bd es indiferente
+url = '/sqlite_sequence/query/' # Usamos la tabla por defecto, ya que no importa qué tabla se usa para conectar
+host = '192.168.21.95:8083' #'127.0.0.1:8080'
 
 # Datos a enviar en la solicitud POST
 data = {
@@ -15,7 +15,7 @@ data = {
 params = urllib.parse.urlencode(data)
 headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
 
-# Crear la conexión
+# Crear la conexión; Timeout de 10 segundos
 conn = http.client.HTTPConnection(host, timeout=10)
 
 # Realizar la solicitud POST
